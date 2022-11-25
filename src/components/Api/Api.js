@@ -8,7 +8,7 @@ function Api() {
         method: "GET",
         headers: {
             accept: "application/json",
-            "X-API-Key": process.env.WEB_API_KEY,
+            "X-API-Key": process.env.REACT_APP_API_KEY,
         },
     };
     // Chain and its wrapper token address data
@@ -59,13 +59,10 @@ function Api() {
                 options
             );
             const resTokenPrice = await resTokenPriceData.json();
-            console.log(resTokenPrice);
             console.log(`
     Network Name - ${curr.networkName}
     Wallet Balance - ${resBalance.balance / 1e18}
-    Token Price - $${resTokenPrice.usdPrice.toLocaleString()}/${resTokenPrice.nativePrice.symbol
-                }
-`);
+    Token Price - $${resTokenPrice.usdPrice.toLocaleString()}/${resTokenPrice.nativePrice.symbol}`);
         } catch (err) {
             console.log(err);
         }
